@@ -16,11 +16,11 @@ class Restaurante:
 
     @classmethod
     def listar_restaurantes(cls):
-        titulo_listar = f'{"Nome do restaurante".ljust(25)} │ {"Categoria".ljust(25)} │ {"Status"}'
+        titulo_listar = f'{"Nome do restaurante".ljust(25)} │ {"Categoria".ljust(25)} │ {"Avaliação".ljust(25)} | {"Status"}'
         print(titulo_listar)
         print('─'*len(titulo_listar))
         for restaurante in cls.restaurantes:
-            print(f'{restaurante.nome.ljust(25)} │ {restaurante.categoria.ljust(25)} │ {restaurante.ativo}')
+            print(f'{restaurante.nome.ljust(25)} │ {restaurante.categoria.ljust(25)} │ {str(restaurante.media_avaliacao).ljust(25)}| {restaurante.ativo}')
 
     @property
     def ativo(self):
@@ -39,4 +39,3 @@ class Restaurante:
             return 0
         soma_notas = sum(avaliacao._nota for avaliacao in self._avaliacao)
         return round(soma_notas / len(self._avaliacao), 1)
-    
